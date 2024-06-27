@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- The Basics -->
+    <groupId>io.github.mczeno</groupId>
+    <artifactId>tool-java</artifactId>
+    <version>1.0.0</version>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- Validator -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>3.0.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.5.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <!--    <parent>...</parent>-->
+    <!--    <dependencyManagement>...</dependencyManagement>-->
+    <!--    <modules>...</modules>-->
+    <!--    <properties>...</properties>-->
+
+    <!--    &lt;!&ndash; Build Settings &ndash;&gt;-->
+    <!--    <build>...</build>-->
+    <!--    <reporting>...</reporting>-->
+
+    <!--    &lt;!&ndash; More Project Information &ndash;&gt;-->
+    <!--    <name>...</name>-->
+    <!--    <description>...</description>-->
+    <!--    <url>...</url>-->
+    <!--    <inceptionYear>...</inceptionYear>-->
+    <!--    <licenses>...</licenses>-->
+    <!--    <organization>...</organization>-->
+    <!--    <developers>...</developers>-->
+    <!--    <contributors>...</contributors>-->
+
+    <!--    &lt;!&ndash; Environment Settings &ndash;&gt;-->
+    <!--    <issueManagement>...</issueManagement>-->
+    <!--    <ciManagement>...</ciManagement>-->
+    <!--    <mailingLists>...</mailingLists>-->
+    <!--    <scm>...</scm>-->
+    <!--    <prerequisites>...</prerequisites>-->
+    <!--    <repositories>...</repositories>-->
+    <!--    <pluginRepositories>...</pluginRepositories>-->
+    <!--    <distributionManagement>...</distributionManagement>-->
+    <!--    <profiles>...</profiles>-->
+</project>

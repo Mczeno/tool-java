@@ -1,14 +1,15 @@
 package io.github.mczeno.tool;
 
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ValidationException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.ConstraintViolation;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * ValidationUtilTest
@@ -45,6 +46,20 @@ public class ValidationUtilTest {
         Set<String> messages = ValidationUtil.validateAndGetMessages(testObject);
         System.out.println(messages);
         assertEquals(2, messages.size());
+    }
+
+    @Test
+    public void validateAndThrow_NoViolations_ShouldNotThrowException() {
+        TestObject testObject = new TestObject();
+        testObject.setId(1L);
+        testObject.setCode("test");
+        assertDoesNotThrow(() -> ValidationUtil.validateAndThrow(testObject));
+    }
+
+    @Test
+    public void validateAndThrow_WithViolations_ShouldThrowValidationException() {
+        TestObject testObject = new TestObject();
+        assertThrows(ValidationException.class, () -> ValidationUtil.validateAndThrow(testObject));
     }
 
     @Test

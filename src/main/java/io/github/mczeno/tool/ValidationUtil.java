@@ -1,11 +1,13 @@
 package io.github.mczeno.tool;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 /**
  * ValidationUtil
@@ -30,6 +32,7 @@ public class ValidationUtil {
      * 验证对象并返回所有约束违反
      *
      * @param object 要验证的对象
+     *
      * @return 包含所有约束违反的Set
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object) {
@@ -40,6 +43,7 @@ public class ValidationUtil {
      * 验证对象并返回第一个约束违反（如果存在）
      *
      * @param object 要验证的对象
+     *
      * @return 第一个约束违反，如果没有则返回null
      */
     public static <T> ConstraintViolation<T> validateFirst(T object) {
@@ -51,6 +55,7 @@ public class ValidationUtil {
      * 验证对象并返回所有约束违反的消息
      *
      * @param object 要验证的对象
+     *
      * @return 包含所有约束违反消息的Set
      */
     public static <T> Set<String> validateAndGetMessages(T object) {
@@ -60,9 +65,24 @@ public class ValidationUtil {
     }
 
     /**
+     * 验证对象并抛出异常（如果存在任何约束违反）
+     *
+     * @param object 要验证的对象
+     *
+     * @throws ValidationException 验证异常
+     */
+    public static <T> void validateAndThrow(T object) {
+        Set<String> messages = validateAndGetMessages(object);
+        if (!messages.isEmpty()) {
+            throw new ValidationException(String.join("; ", messages));
+        }
+    }
+
+    /**
      * 验证对象并返回是否有效
      *
      * @param object 要验证的对象
+     *
      * @return 如果对象有效则为true，否则为false
      */
     public static <T> boolean isValid(T object) {
